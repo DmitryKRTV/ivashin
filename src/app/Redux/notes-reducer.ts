@@ -1,6 +1,12 @@
 const initialState = {
-    notes: [{}] as Note[],
-    tags: [{}] as Tag[],
+    notes: [{
+        id: "1",
+        title: "I wanna go to #shop"
+    }] as Note[],
+    tags: [{
+        id: "1",
+        title: "shop"
+    }] as Tag[],
 }
 
 type InitialStateType = typeof initialState

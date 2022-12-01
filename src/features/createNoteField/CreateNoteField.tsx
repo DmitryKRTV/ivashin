@@ -5,8 +5,12 @@ import {useFormik} from "formik";
 import {addNote, addTag} from "../../app/Redux/notes-reducer";
 import {v1} from "uuid";
 import {changeFilter} from "../../app/Redux/filter-reducer";
+import {useAppSelector} from "../../common/hooks/reduxHooks";
 
 export const CreateNoteField = () => {
+
+    const filter = useAppSelector(state => state.filterReducer.filter)
+    const tags = useAppSelector(state => state.notesReducer.tags)
 
     const dispatch = useDispatch()
 
@@ -42,6 +46,15 @@ export const CreateNoteField = () => {
         },
     })
 
+    const clearFilter = () => {
+        const require = tags.some((tag) => {
+            return tag.title === filter
+        })
+        if (!require) {
+            setFilter("")
+        }
+    }
+
     return (
         <Box>
             <form onSubmit={formik.handleSubmit}>
@@ -52,6 +65,7 @@ export const CreateNoteField = () => {
                                    variant="outlined"
                                    sx={{margin: "10px 10px 0 10px"}}
                                    {...formik.getFieldProps("fieldValue")}
+                                   onBlur={clearFilter}
                         />
                         <Button sx={{margin: "11.5px 10px 5px 10px"}} type={"submit"} variant={"contained"}
                                 color={"primary"}>Create</Button>

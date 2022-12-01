@@ -20,8 +20,6 @@ export const TagItem = (props: TagItemProps) => {
     }
 
     const setFilter = (title: string) => {
-        console.log(title)
-        console.log(filter)
         if (filter === title) {
             dispatch(changeFilter(""))
             return

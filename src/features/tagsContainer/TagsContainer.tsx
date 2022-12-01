@@ -10,14 +10,23 @@ export const TagsContainer = () => {
 
     return (
         <Box sx={{display: "flex", flexWrap: "wrap", margin: "10px", alignItems: "center"}}>
-            {tags.map((tag, index) => {
-                return (
-                    <TagItem tag={tag} key={`${tag.id} ${index}`}/>
-                )
-            })}
-            <Box>
-                <CreateTagField/>
-            </Box>
+            {
+                tags.length > 0
+                    ?
+                    <>
+                        {tags.map((tag, index) => {
+                            return (
+                                <TagItem tag={tag} key={`${tag.id} ${index}`}/>
+                            )
+                        })}
+                        <Box>
+                            <CreateTagField/>
+                        </Box>
+                    </>
+                    : <Box>
+                        <CreateTagField/>
+                    </Box>
+            }
         </Box>
     );
 };

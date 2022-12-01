@@ -1,12 +1,6 @@
 const initialState = {
-    notes: [{
-        id: "1",
-        title: "I wanna go to #shop"
-    }] as Note[],
-    tags: [{
-        id: "1",
-        title: "shop"
-    }] as Tag[],
+    notes: [] as Note[],
+    tags: [] as Tag[],
 }
 
 type InitialStateType = typeof initialState
@@ -27,9 +21,14 @@ export const notesReducer = (state: InitialStateType = initialState, action: Act
                     ? {...note, title: action.payload.title} : {...note})
             }
         case "NOTES/ADD-TAG":
-            return {
-                ...state, tags: [action.payload.tag, ...state.tags]
+            if (!state.tags.some((tag) => {
+                return tag.title === action.payload.tag.title
+            })) {
+                return {
+                    ...state, tags: [action.payload.tag, ...state.tags]
+                }
             }
+            return state
         case "NOTES/DELETE-TAG":
             return {
                 ...state, tags: state.tags.filter((tags) => tags.id !== action.payload.id)

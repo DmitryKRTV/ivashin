@@ -4,21 +4,13 @@ import {useDispatch} from "react-redux";
 import {useFormik} from "formik";
 import {addNote, addTag} from "../../app/Redux/notes-reducer";
 import {v1} from "uuid";
-import {changeFilter} from "../../app/Redux/filter-reducer";
-import {useAppSelector} from "../../common/hooks/reduxHooks";
+import {updateTempFilter} from "../../app/Redux/filter-reducer";
 
 export const CreateNoteField = () => {
-
-    const filter = useAppSelector(state => state.filterReducer.filter)
-    const tags = useAppSelector(state => state.notesReducer.tags)
 
     const dispatch = useDispatch()
 
     const [tagsTemp, setTagsTemp] = useState("");
-
-    const setFilter = (title: string) => {
-        dispatch(changeFilter(title))
-    }
 
     const formik = useFormik({
         initialValues: {
@@ -31,7 +23,7 @@ export const CreateNoteField = () => {
             }
             if (values.fieldValue.includes("#")) {
                 setTagsTemp(values.fieldValue.split("#")[1])
-                setFilter(values.fieldValue.split("#")[1])
+                setTempFilter(values.fieldValue.split("#")[1])
             }
             return errors
         },
@@ -41,18 +33,17 @@ export const CreateNoteField = () => {
                 setTagsTemp("")
             }
             dispatch(addNote({id: v1(), title: values.fieldValue}))
-            setFilter("")
+            clearFilter()
             formik.resetForm()
         },
     })
 
+    const setTempFilter = (title: string) => {
+        dispatch(updateTempFilter(title))
+    }
+
     const clearFilter = () => {
-        const require = tags.some((tag) => {
-            return tag.title === filter
-        })
-        if (!require) {
-            setFilter("")
-        }
+        if(!tagsTemp || formik.values.fieldValue === "") setTempFilter("")
     }
 
     return (

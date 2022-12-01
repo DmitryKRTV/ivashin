@@ -19,7 +19,7 @@ export const NotesContainer = () => {
             return notes.filter((note) => {
                 return (
                     filters.every((filter) => {
-                        return note.title.includes(filter.title)
+                        return note.title.toLowerCase().includes(filter.title.toLowerCase())
                     })
                 )
             })

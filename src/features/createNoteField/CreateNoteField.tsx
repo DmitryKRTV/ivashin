@@ -30,6 +30,7 @@ export const CreateNoteField = () => {
         onSubmit: values => {
             if (tagsTemp) {
                 dispatch(addTag({id: v1(), title: tagsTemp}))
+                dispatch(updateTempFilter(""))
                 setTagsTemp("")
             }
             dispatch(addNote({id: v1(), title: values.fieldValue}))

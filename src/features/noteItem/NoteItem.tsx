@@ -49,7 +49,7 @@ export const NoteItem = (props: NoteItemProps) => {
                          sx={{padding: "8px"}}
             />
             : <Item onDoubleClick={activateEditMode}>
-                {getHighlightedText(note.title, filter)}
+                {note.title ? getHighlightedText(note.title, filter) : ""}
                 <IconButton aria-label="delete"
                             onClick={() => {
                                 removeNote(note.id)

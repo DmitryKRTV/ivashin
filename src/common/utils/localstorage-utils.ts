@@ -1,5 +1,6 @@
 import {RootState} from "../../app/Redux/store";
 
+
 export const loadState = () => {
     try {
         const serializedState = localStorage.getItem('app-state');
@@ -12,12 +13,10 @@ export const loadState = () => {
     }
 };
 
-
 export const saveState = (state: RootState) => {
     try {
         const serializedState = JSON.stringify(state);
         localStorage.setItem('app-state', serializedState);
     } catch {
-        // ignore write errors
     }
 };

@@ -4,6 +4,7 @@ import {Box} from "@mui/material";
 import {useAppSelector} from "../../common/hooks/reduxHooks";
 import {CreateTagField} from "../createTagField/CreateTagField";
 
+
 export const TagsContainer = () => {
 
     const tags = useAppSelector(state => state.notesReducer.tags)

@@ -1,5 +1,6 @@
 import React from "react";
 
+
 export const getHighlightedTextFromArray = (text: string, highlights: string[]) => {
     const parts = text.split(new RegExp(`(${highlights.join('|')})`, 'gi'));
     return <span> { parts.map((part, i) =>

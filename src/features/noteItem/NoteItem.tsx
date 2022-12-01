@@ -10,6 +10,7 @@ import {getHighlightedTextFromArray} from "../../common/utils/getHighlightedText
 import {v1} from "uuid";
 import {updateTempFilter} from "../../app/Redux/filter-reducer";
 
+
 export const NoteItem = (props: NoteItemProps) => {
 
     const {note} = props

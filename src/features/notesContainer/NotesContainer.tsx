@@ -7,6 +7,7 @@ import {removeAllFilters} from "../../app/Redux/filter-reducer";
 import {useDispatch} from "react-redux";
 import {Item} from "../../common/components/item/Item";
 
+
 export const NotesContainer = () => {
 
     const filters = useAppSelector(state => state.filterReducer.filters)

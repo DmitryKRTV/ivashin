@@ -6,6 +6,7 @@ import {addNote, addTag} from "../../app/Redux/notes-reducer";
 import {v1} from "uuid";
 import {updateTempFilter} from "../../app/Redux/filter-reducer";
 
+
 export const CreateNoteField = () => {
 
     const dispatch = useDispatch()
@@ -44,7 +45,7 @@ export const CreateNoteField = () => {
     }
 
     const clearFilter = () => {
-        if(!tagsTemp || formik.values.fieldValue === "") setTempFilter("")
+        if (!tagsTemp || formik.values.fieldValue === "") setTempFilter("")
     }
 
     return (

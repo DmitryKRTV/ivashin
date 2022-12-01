@@ -6,6 +6,7 @@ import {addTag} from "../../app/Redux/notes-reducer";
 import {v1} from "uuid";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
+
 export const CreateTagField = () => {
 
     const dispatch = useDispatch()
@@ -37,7 +38,6 @@ export const CreateTagField = () => {
     const activateEditMode = () => {
         setEditMode(true)
     }
-
 
     return (
         <Box>

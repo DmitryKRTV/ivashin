@@ -7,6 +7,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import {useAppSelector} from "../../common/hooks/reduxHooks";
 import {addFilter, deleteFilter} from "../../app/Redux/filter-reducer";
 
+
 export const TagItem = (props: TagItemProps) => {
 
     const filters = useAppSelector(state => state.filterReducer.filters)
